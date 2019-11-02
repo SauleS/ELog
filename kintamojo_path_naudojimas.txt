@@ -1,0 +1,51 @@
+[saules@localhost ~]$ cd SimpleTest1
+[saules@localhost SimpleTest1]$ vi run.sh
+[saules@localhost SimpleTest1]$ chmod +x run.sh
+[saules@localhost SimpleTest1]$ ./run.sh
+Laba diena, cia programa is SimpleTest1
+[saules@localhost SimpleTest1]$ cd
+[saules@localhost ~]$ cd SimpleTest2
+[saules@localhost SimpleTest2]$ vi run.sh
+[saules@localhost SimpleTest2]$ chmod +x run.sh
+[saules@localhost SimpleTest2]$ ./run.sh
+Laba diena, cia programa is SimpleTest2, chacha
+[saules@localhost SimpleTest2]$ cd
+[saules@localhost ~]$ SimpleTest1/run.sh
+Laba diena, cia programa is SimpleTest1
+[saules@localhost ~]$ SimpleTest2/run.sh
+Laba diena, cia programa is SimpleTest2, chacha
+[saules@localhost ~]$ echo $PATH
+/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/saules/.local/bin:/home/saules/bin
+[saules@localhost ~]$ ./run.sh
+bash: ./run.sh: No such file or directory
+[saules@localhost ~]$ export PATH=$PWD/SimpleTest1:$PATH
+[saules@localhost ~]$ run.sh
+Laba diena, cia programa is SimpleTest1
+[saules@localhost ~]$ $PATH
+bash: /home/saules/SimpleTest1:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/saules/.local/bin:/home/saules/bin: No such file or directory
+[saules@localhost ~]$ echo $PATH
+/home/saules/SimpleTest1:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/saules/.local/bin:/home/saules/bin
+[saules@localhost ~]$ run.sh
+Laba diena, cia programa is SimpleTest1
+[saules@localhost ~]$ export PATH=$PATH:$PWD/SimpleTest2
+[saules@localhost ~]$ run.sh
+Laba diena, cia programa is SimpleTest1
+[saules@localhost ~]$ echo $PATH
+/home/saules/SimpleTest1:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/saules/.local/bin:/home/saules/bin:/home/saules/SimpleTest2
+[saules@localhost ~]$ export PATH=$PWD/SimpleTest2:$PATH
+[saules@localhost ~]$ echo $PATH
+/home/saules/SimpleTest2:/home/saules/SimpleTest1:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/texlive/2019/bin/x86_64-linux:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/saules/.local/bin:/home/saules/bin:/home/saules/SimpleTest2
+[saules@localhost ~]$ run.sh
+Laba diena, cia programa is SimpleTest2, chacha
+[saules@localhost ~]$ which run.sh
+~/SimpleTest2/run.sh
+[saules@localhost ~]$ whereis run.sh
+run: /home/saules/SimpleTest2/run.sh /home/saules/SimpleTest1/run.sh
+[saules@localhost ~]$ cat SimpleTest?/run.sh
+#!/bin/bash
+
+echo "Laba diena, cia programa is SimpleTest1"
+#!/bin/bash
+
+echo "Laba diena, cia programa is SimpleTest2, chacha"
+[saules@localhost ~]$ 
